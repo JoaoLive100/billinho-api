@@ -14,7 +14,6 @@ class Student < ApplicationRecord
     validates :cpf, presence: true, uniqueness: true
     validates :birth_date, presence: true
     validates :phone, presence: true
-    validates :gender, presence: true
-    validates :payment_method, presence: true
-
+    validates :gender, presence: true, inclusion: { in: genders.keys }
+    validates :payment_method, presence: true, inclusion: { in: payment_methods.keys }
 end
