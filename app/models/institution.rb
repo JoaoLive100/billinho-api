@@ -1,6 +1,6 @@
 class Institution < ApplicationRecord
-    has_many :students
-
+    has_many :enrollments
+    
     enum kind: {
         university: 0,
         school: 1,
@@ -9,5 +9,5 @@ class Institution < ApplicationRecord
 
     validates :name, presence: true
     validates :cnpj, presence: true, uniqueness: true
-    validates :kind, presence: true
+    validates :kind, presence: true, inclusion: { in: kinds.keys }
 end

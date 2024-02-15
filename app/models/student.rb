@@ -1,5 +1,4 @@
 class Student < ApplicationRecord
-    belongs_to :institution
     has_many :enrollments
     
     enum gender: {

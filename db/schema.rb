@@ -19,9 +19,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_30_182249) do
     t.integer "installments_number"
     t.integer "installments_due_day"
     t.string "course_name"
+    t.bigint "institution_id", null: false
     t.bigint "student_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["institution_id"], name: "index_enrollments_on_institution_id"
     t.index ["student_id"], name: "index_enrollments_on_student_id"
   end
 
@@ -56,6 +58,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_30_182249) do
     t.index ["institution_id"], name: "index_students_on_institution_id"
   end
 
+  add_foreign_key "enrollments", "institutions"
   add_foreign_key "enrollments", "students"
   add_foreign_key "invoices", "enrollments"
   add_foreign_key "students", "institutions"
