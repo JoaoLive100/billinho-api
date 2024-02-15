@@ -52,14 +52,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_30_182249) do
     t.string "phone"
     t.integer "gender"
     t.integer "payment_method"
-    t.bigint "institution_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["institution_id"], name: "index_students_on_institution_id"
   end
 
   add_foreign_key "enrollments", "institutions"
   add_foreign_key "enrollments", "students"
   add_foreign_key "invoices", "enrollments"
-  add_foreign_key "students", "institutions"
 end
