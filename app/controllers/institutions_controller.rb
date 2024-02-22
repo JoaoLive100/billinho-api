@@ -1,10 +1,24 @@
 class InstitutionsController < ApplicationController
-
-    # GET /institutions (all institutions)
-    def index
+    
+    # GET /institutions/all (all institutions)
+    def all
         @institutions = Institution.all
 
-        render json: {status: 'SUCCESS', message: 'Loaded institutions', data: @institutions}, status: :ok
+        render json: {status: 'SUCCESS', message: 'Loaded all institutions', data: @institutions}, status: :ok
+    end
+
+    # GET /institutions (all enabled institutions)
+    def index
+        @institutions = Institution.where(enabled: true)
+
+        render json: {status: 'SUCCESS', message: 'Loaded enabled institutions', data: @institutions}, status: :ok
+    end
+
+    # GET /institutions/disabled (all disabled institutions)
+    def disabled
+        @institutions = Institution.where(enabled: false)
+
+        render json: {status: 'SUCCESS', message: 'Loaded disabled institutions', data: @institutions}, status: :ok
     end
     
     # GET /institutions/:id (institution by id)
@@ -12,11 +26,6 @@ class InstitutionsController < ApplicationController
         @institution = Institution.find(params[:id])
 
         render json: {status: 'SUCCESS', message: 'Loaded institution', data: @institution}, status: :ok
-    end
-    
-    # GET /institutions/new (new institution)
-    def new
-        @institution = Institution.new
     end
     
     # POST /institutions (create institution)
@@ -41,10 +50,11 @@ class InstitutionsController < ApplicationController
 
     # DELETE /institutions/:id (delete institution)
     def destroy
-        @institution = Institution.find(params[:id])
-        @institution.destroy
-
-        render json: {status: 'SUCCESS', message: 'Deleted institution', data: @institution}, status: :ok
+        ActiveRecord::Base.trasaction do
+            @institution = Institution.find(params[:id])
+            @institution.update(enabled: false)
+            render json: {status: 'SUCCESS', message: 'Deleted institution', data: @institution}, status: :ok
+        end
     end
 
     private

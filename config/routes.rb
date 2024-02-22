@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+
+  # GET /institutions/all (all institutions)
+  get 'institutions/all', to: 'institutions#all'
+
+  # GET /institutions/disabled (all disabled institutions)
+  get 'institutions/disabled', to: 'institutions#disabled'
+
   resources :institutions
   resources :students
   resources :enrollments

@@ -4,6 +4,7 @@ class CreateInstitutions < ActiveRecord::Migration[7.1]
       t.string :name
       t.string :cnpj
       t.integer :kind
+      t.boolean :enabled, default: true
 
       t.timestamps
     end
