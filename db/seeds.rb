@@ -15,3 +15,15 @@
         enabled: true
     })
 end
+
+50.times do
+    Student.create({
+        name: Faker::Name.name,
+        cpf: Faker::IDNumber.brazilian_citizen_number,
+        birth_date: Faker::Date.birthday(min_age: 18, max_age: 65),
+        phone: Faker::PhoneNumber.cell_phone,
+        gender: rand(0..1),
+        payment_method: rand(0..1),
+        enabled: true
+    })
+end

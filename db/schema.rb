@@ -53,6 +53,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_30_182249) do
     t.string "phone"
     t.integer "gender"
     t.integer "payment_method"
+    t.boolean "enabled", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

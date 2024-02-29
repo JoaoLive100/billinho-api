@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  # ----------------- INSTITUTIONS -----------------
   # GET /institutions/all (all institutions)
   get 'institutions/all', to: 'institutions#all'
 
@@ -7,8 +8,20 @@ Rails.application.routes.draw do
   get 'institutions/disabled', to: 'institutions#disabled'
 
   resources :institutions
+
+  # ----------------- STUDENTS -----------------
+  # GET /students/all (all students)
+  get 'students/all', to: 'students#all'
+
+  # GET /students/disabled (all disabled students)
+  get 'students/disabled', to: 'students#disabled'
+
   resources :students
+
+  # ----------------- ENROLLMENTS -----------------
   resources :enrollments
+
+  # ----------------- INVOICES -----------------
   resources :invoices
   
   get 'up' => 'rails/health#show', as: :rails_health_check

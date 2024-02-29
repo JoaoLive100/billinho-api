@@ -16,4 +16,5 @@ class Student < ApplicationRecord
     validates :phone, presence: true
     validates :gender, presence: true, inclusion: { in: genders.keys }
     validates :payment_method, presence: true, inclusion: { in: payment_methods.keys }
+    validates :enabled, inclusion: { in: [true, false] }
 end

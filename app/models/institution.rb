@@ -10,4 +10,5 @@ class Institution < ApplicationRecord
     validates :name, presence: true
     validates :cnpj, presence: true, uniqueness: true
     validates :kind, presence: true, inclusion: { in: kinds.keys }
+    validates :enabled, inclusion: { in: [true, false] }
 end
