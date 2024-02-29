@@ -1,5 +1,19 @@
 class EnrollmentsController < ApplicationController
 
+    # GET /enrollments/student_enrollments/:student_id (enrollments by student id)
+    def student_enrollments
+        @enrollments = Enrollment.where(student_id: params[:student_id])
+
+        render json: {status: 'SUCCESS', message: 'Loaded student enrollments', data: @enrollments}, status: :ok
+    end
+
+    # GET /enrollments/institution_enrollments/:institution_id (enrollments by institution id)
+    def institution_enrollments
+        @enrollments = Enrollment.where(institution_id: params[:institution_id])
+
+        render json: {status: 'SUCCESS', message: 'Loaded institution enrollments', data: @enrollments}, status: :ok
+    end
+
     # GET /enrollments/all (all enrollments)
     def all
         @enrollments = Enrollment.all
