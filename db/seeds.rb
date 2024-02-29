@@ -27,3 +27,15 @@ end
         enabled: true
     })
 end
+
+50.times do
+    Enrollment.create({
+        total_course_cost: Faker::Number.decimal(l_digits: 4, r_digits: 2),
+        installments_number: rand(1..12),
+        installments_due_day: rand(1..31),
+        course_name: Faker::Educator.course_name,
+        institution_id: rand(1..50),
+        student_id: rand(1..50),
+        enabled: true
+    })
+end

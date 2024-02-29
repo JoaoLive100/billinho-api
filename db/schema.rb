@@ -21,6 +21,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_30_182249) do
     t.string "course_name"
     t.bigint "institution_id", null: false
     t.bigint "student_id", null: false
+    t.boolean "enabled", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["institution_id"], name: "index_enrollments_on_institution_id"

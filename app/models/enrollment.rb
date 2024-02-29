@@ -7,6 +7,7 @@ class Enrollment < ApplicationRecord
   validates :installments_number, presence: true, numericality: { greater_than: 0 }
   validates :installments_due_day, presence: true, numericality: { greater_than: 0, less_than: 32 }
   validates :course_name, presence: true
+  validates :enabled, inclusion: { in: [true, false] }
 
   # validate :invoices_total_matches_enrollment_total
   # validate :number_of_invoices_matches_installments_number

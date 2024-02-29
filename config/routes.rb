@@ -19,6 +19,12 @@ Rails.application.routes.draw do
   resources :students
 
   # ----------------- ENROLLMENTS -----------------
+  # GET /enrollments/all (all enrollments)
+  get 'enrollments/all', to: 'enrollments#all'
+
+  # GET /enrollments/disabled (all disabled enrollments)
+  get 'enrollments/disabled', to: 'enrollments#disabled'
+  
   resources :enrollments
 
   # ----------------- INVOICES -----------------
