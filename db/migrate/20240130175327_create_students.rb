@@ -7,7 +7,7 @@ class CreateStudents < ActiveRecord::Migration[7.1]
       t.string :phone
       t.integer :gender
       t.integer :payment_method
-      t.references :institution, null: false, foreign_key: true
+      t.boolean :enabled, default: true
       
       t.timestamps
     end
