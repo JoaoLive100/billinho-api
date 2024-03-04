@@ -5,6 +5,7 @@ class CreateInvoices < ActiveRecord::Migration[7.1]
       t.date :due_date
       t.integer :status, default: 0
       t.references :enrollment, null: false, foreign_key: true
+      t.boolean :enabled, default: true
 
       t.timestamps
     end

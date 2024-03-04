@@ -46,6 +46,7 @@ class EnrollmentsController < ApplicationController
     def create
         @enrollment = Enrollment.new(enrollment_params)
         if @enrollment.save
+            # @invoices = CreateEnrollmentInvoices.perform(enrollment_params)
             render json: {status: 'SUCCESS', message: 'Saved enrollment', data: @enrollment}, status: :ok
         else
             render json: {status: 'ERROR', message: 'Enrollment not saved', data: @enrollment.errors}, status: :unprocessable_entity
@@ -73,6 +74,6 @@ class EnrollmentsController < ApplicationController
     
     private
     def enrollment_params
-        params.require(:enrollment).permit(:total_course_cost, :installments_number, :installments_due_day, :course_name, :institution_id, :student_id)
+        params.require(:enrollment).permit(:total_course_cost, :invoices_number, :invoices_due_day, :course_name, :institution_id, :student_id)
     end
 end
