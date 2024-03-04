@@ -2,16 +2,16 @@
 
 one:
   total_course_cost: 9.99
-  installments_number: 1
-  installments_due_day: 1
+  invoices_number: 1
+  invoices_due_day: 1
   course_name: MyString
   instituition: one
   student: one
 
 two:
   total_course_cost: 9.99
-  installments_number: 1
-  installments_due_day: 1
+  invoices_number: 1
+  invoices_due_day: 1
   course_name: MyString
   instituition: two
   student: two

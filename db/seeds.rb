@@ -7,6 +7,9 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+require_relative '../app/services/enrollment_invoices/create_enrollment_invoices'
+
 50.times do
     Institution.create({
         name: Faker::Educator.university,
@@ -27,3 +30,21 @@ end
         enabled: true
     })
 end
+
+50.times do
+    Enrollment.create({
+        total_course_cost: Faker::Number.decimal(l_digits: 4, r_digits: 2),
+        invoices_number: rand(1..12),
+        invoices_due_day: rand(1..31),
+        course_name: Faker::Educator.course_name,
+        institution_id: rand(1..50),
+        student_id: rand(1..50),
+        enabled: true
+    })
+    # CreateEnrollmentInvoices.perform(Enrollment.last, Enrollment.last.attributes)
+
+    # Create instance of CreateEnrollmentInvoices and perform invoice generation
+    # create_enrollment_invoices = CreateEnrollmentInvoices.new(Enrollment.last, Enrollment.last.attributes)
+    # create_enrollment_invoices.perform
+end
+

@@ -16,11 +16,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_30_182249) do
 
   create_table "enrollments", force: :cascade do |t|
     t.decimal "total_course_cost"
-    t.integer "installments_number"
-    t.integer "installments_due_day"
+    t.integer "invoices_number"
+    t.integer "invoices_due_day"
     t.string "course_name"
     t.bigint "institution_id", null: false
     t.bigint "student_id", null: false
+    t.boolean "enabled", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["institution_id"], name: "index_enrollments_on_institution_id"
@@ -41,6 +42,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_30_182249) do
     t.date "due_date"
     t.integer "status", default: 0
     t.bigint "enrollment_id", null: false
+    t.boolean "enabled", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["enrollment_id"], name: "index_invoices_on_enrollment_id"
