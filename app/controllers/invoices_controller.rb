@@ -14,6 +14,13 @@ class InvoicesController < ApplicationController
         render json: {status: 'SUCCESS', message: 'Loaded institution invoices', data: @invoices}, status: :ok
     end
 
+    # GET /invoices/enrollment_invoices/:enrollment_id (invoices by enrollment id)
+    def enrollment_invoices
+        @invoices = Invoice.where(enrollment_id: params[:enrollment_id])
+
+        render json: {status: 'SUCCESS', message: 'Loaded enrollment invoices', data: @invoices}, status: :ok
+    end
+    
     # GET /invoices/all (all invoices)
     def all
         @invoices = Invoice.all

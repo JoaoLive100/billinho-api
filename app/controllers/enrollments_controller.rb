@@ -44,12 +44,18 @@ class EnrollmentsController < ApplicationController
     
     # POST /enrollments (create enrollment)
     def create
-        @enrollment = Enrollment.new(enrollment_params)
-        if @enrollment.save
-            # @invoices = CreateEnrollmentInvoices.perform(enrollment_params)
-            render json: {status: 'SUCCESS', message: 'Saved enrollment', data: @enrollment}, status: :ok
-        else
-            render json: {status: 'ERROR', message: 'Enrollment not saved', data: @enrollment.errors}, status: :unprocessable_entity
+        ActiveRecord::Base.transaction do
+            @enrollment = Enrollment.new(enrollment_params)
+
+            if @enrollment.save
+
+                @invoices = CreateEnrollmentInvoices.new(@enrollment)
+                @invoices.perform
+                
+                render json: {status: 'SUCCESS', message: 'Saved enrollment', data: @enrollment}, status: :ok
+            else
+                render json: {status: 'ERROR', message: 'Enrollment not saved', data: @enrollment.errors}, status: :unprocessable_entity
+            end
         end
     end
 
