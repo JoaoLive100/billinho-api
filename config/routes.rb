@@ -34,6 +34,21 @@ Rails.application.routes.draw do
   resources :enrollments
 
   # ----------------- INVOICES -----------------
+  # GET /invoices/student_invoices/:student_id (invoices by student id)
+  get 'invoices/student_invoices/:enrollment_id', to: 'invoices#enrollment_invoices'
+
+  # GET /invoices/institution_invoices/:institution_id (invoices by institution id)
+  get 'invoices/institution_invoices/:institution_id', to: 'invoices#institution_invoices'
+
+  # GET /invoices/enrollment_invoices/:enrollment_id (invoices by enrollment id)
+  get 'invoices/enrollment_invoices/:enrollment_id', to: 'invoices#enrollment_invoices'
+
+  # GET /invoices/all (all invoices)
+  get 'invoices/all', to: 'invoices#all'
+
+  # GET /invoices (all disabled invoices)
+  get 'invoices/disabled', to: 'invoices#disabled'
+
   resources :invoices
   
   get 'up' => 'rails/health#show', as: :rails_health_check
