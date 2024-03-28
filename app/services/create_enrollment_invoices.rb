@@ -26,7 +26,7 @@ class CreateEnrollmentInvoices
                 enrollment_id: @enrollment.id
             })
             unless invoice.save
-                raise StandardError, "Invoice not saved: #{invoice.errors.full_messages.join(', ')}"
+                raise StandardError, "Invoice not saved"
             end
         end
     end
@@ -35,7 +35,7 @@ class CreateEnrollmentInvoices
 
     def validate!
         raise "Invalid number of invoices" if @invoices_number < 1
-        raise "Invalid invoice value" if @invoice_value < 0
+        raise "Invalid invoice value" if @invoice_value <= 0
         raise "Invalid invoices due day" if @invoices_due_day < 1 || @invoices_due_day > 31
     end
 
