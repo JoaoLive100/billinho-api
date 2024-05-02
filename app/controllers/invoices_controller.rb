@@ -35,7 +35,7 @@ class InvoicesController < ApplicationController
         render json: {status: 'SUCCESS', message: 'Loaded all enabled invoices', data: @invoices}, status: :ok
     end
 
-    # GET /invoices (all disabled invoices)
+    # GET /invoices/disabled (all disabled invoices)
     def disabled
         @invoices = Invoice.where(enabled: false)
 

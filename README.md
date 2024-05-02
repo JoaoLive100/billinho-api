@@ -47,13 +47,19 @@ rails db:create
 rails db:migrate
 ```
 
-4. **Start the server:**
+4. **Generating data:**
+
+```bash
+rails db:seed
+```
+
+5. **Start the server:**
 
 ```bash
 rails server
 ```
 
-5. **Access the API:**
+6. **Access the API:**
 
 Open a web browser and go to `http://localhost:3000` or use tools like Postman to send HTTP requests to the API.
 
@@ -61,127 +67,115 @@ Open a web browser and go to `http://localhost:3000` or use tools like Postman t
 
 ### Educational Institutions
 
-- **List all educational institutions:**
-
 ```http
+(all institutions)
+GET /institutions/all
+
+(all disabled institutions)
+GET /institutions/disabled
+
+(all enabled institutions)
 GET /institutions
-```
 
-- **Create a new educational institution:**
-
-```http
-POST /institutions
-```
-
-- **Get a specific educational institution:**
-
-```http
+(institution by id)
 GET /institutions/:id
-```
 
-- **Update an existing educational institution:**
+(create institution)
+POST /institutions
 
-```http
+(update institution)
 PUT /institutions/:id
-```
 
-- **Delete an existing educational institution:**
-
-```http
+(delete institution)
 DELETE /institutions/:id
 ```
 
 ### Students
 
-- **List all students:**
-
 ```http
+(all students)
+GET /students/all
+
+(all disabled students)
+GET /students/disabled
+
+(all enabled students)
 GET /students
-```
 
-- **Create a new student:**
-
-```http
-POST /students
-```
-
-- **Get a specific student:**
-
-```http
+(student by id)
 GET /students/:id
-```
-- **Update an existing student:**
 
-```http
+(create student)
+POST /students
+
+(update student)
 PUT /students/:id
-```
 
-- **Delete an existing student:**
-
-```http
+(delete student)
 DELETE /students/:id
 ```
 
 ### Enrollments
 
-- **List all enrollments:**
-
 ```http
+(enrollments by student id)
+GET /enrollments/student_enrollments/:student_id
+
+(enrollments by institution id)
+GET /enrollments/institution_enrollments/:institution_id
+
+(all enrollments)
+GET /enrollments/all
+
+(all disabled enrollments)
 GET /enrollments
-```
 
-- **Create a new enrollment:**
+(all enabled enrollments)
+GET /enrollments
 
-```http
-POST /enrollments
-```
-
-- **Get a specific enrollment:**
-
-```http
+(enrollment by id)
 GET /enrollments/:id
-```
 
-- **Update an existing enrollment:**
+(create enrollment)
+POST /enrollments
 
-```http
+(update enrollment)
 PUT /enrollments/:id
-```
 
-- **Delete an existing enrollment:**
-
-```http
+(delete enrollment)
 DELETE /enrollments/:id
 ```
 
 ### Invoices
 
-- **List all invoices:**
-
 ```http
+(invoices by student id)
+GET /invoices/student_invoices/:student_id
+
+(invoices by institution id)
+GET /invoices/institution_invoices/:institution_id
+
+(invoices by enrollment id)
+GET /invoices/enrollment_invoices/:enrollment_id
+
+(all invoices)
+GET /invoices/all
+
+(all disabled invoices)
+GET /invoices/disabled
+
+(all enabled invoices)
 GET /invoices
-```
 
-- **Create a new invoice:**
-
-```http
-POST /invoices
-```
-
-- **Get a specific invoice:**
-
-```http
+(invoice by id)
 GET /invoices/:id
-```
 
-- **Update an existing invoice:**
+(create invoice)
+POST /invoices
 
-```http
+(update invoice)
 PUT /invoices/:id
-```
 
-- **Delete an existing invoice:**
-
-```http
+(delete invoice)
 DELETE /invoices/:id
 ```

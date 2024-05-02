@@ -46,7 +46,7 @@ Rails.application.routes.draw do
   # GET /invoices/all (all invoices)
   get 'invoices/all', to: 'invoices#all'
 
-  # GET /invoices (all disabled invoices)
+  # GET /invoices/disabled (all disabled invoices)
   get 'invoices/disabled', to: 'invoices#disabled'
 
   resources :invoices
