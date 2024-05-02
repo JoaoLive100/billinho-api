@@ -26,6 +26,15 @@ gem 'cpf_cnpj'
 # Rubycritic gem
 gem 'rubycritic', require: false
 
+# Rspect-rails gem
+gem 'rspec-rails'
+
+# Factory bot gem
+gem 'factory_bot_rails'
+
+# Timecop gem
+gem 'timecop'
+
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
 
