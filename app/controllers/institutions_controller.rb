@@ -41,7 +41,7 @@ class InstitutionsController < ApplicationController
     # PUT /institutions/:id (update institution)
     def update
         @institution = Institution.find(params[:id])
-        if @institution.update_attributes(institution_params)
+        if @institution.update(institution_params)
             render json: {status: 'SUCCESS', message: 'Updated institution', data: @institution}, status: :ok
         else
             render json: {status: 'ERROR', message: 'Institution not updated', data: @institution.errors}, status: :unprocessable_entity
@@ -50,7 +50,7 @@ class InstitutionsController < ApplicationController
 
     # DELETE /institutions/:id (delete institution)
     def destroy
-        ActiveRecord::Base.trasaction do
+        ActiveRecord::Base.transaction do
             @institution = Institution.find(params[:id])
             @institution.update(enabled: false)
             render json: {status: 'SUCCESS', message: 'Deleted institution', data: @institution}, status: :ok

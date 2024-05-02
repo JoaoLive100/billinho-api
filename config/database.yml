@@ -14,7 +14,7 @@ development:
   database: billinho_dev
 test:
   <<: *default
-  database: billinho_dev
+  database: billinho_test
 
 production:
   <<: *default

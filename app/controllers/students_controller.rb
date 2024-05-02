@@ -41,7 +41,7 @@ class StudentsController < ApplicationController
     # PUT /students/:id (update student)
     def update
         @student = Student.find(params[:id])
-        if @student.update_attributes(student_params)
+        if @student.update(student_params)
             render json: {status: 'SUCCESS', message: 'Updated student', data: @student}, status: :ok
         else
             render json: {status: 'ERROR', message: 'Student not updated', data: @student.errors}, status: :unprocessable_entity
@@ -50,7 +50,7 @@ class StudentsController < ApplicationController
 
     # DELETE /students/:id (delete student)
     def destroy
-        ActiveRecord::Base.trasaction do
+        ActiveRecord::Base.transaction do
             @student = Student.find(params[:id])
             @student.update(enabled: false)
             render json: {status: 'SUCCESS', message: 'Deleted student', data: @student}, status: :ok

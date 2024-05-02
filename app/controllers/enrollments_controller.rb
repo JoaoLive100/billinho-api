@@ -62,7 +62,7 @@ class EnrollmentsController < ApplicationController
     # PUT /enrollments/:id (update enrollment)
     def update
         @enrollment = Enrollment.find(params[:id])
-        if @enrollment.update_attributes(enrollment_params)
+        if @enrollment.update(enrollment_params)
             render json: {status: 'SUCCESS', message: 'Updated enrollment', data: @enrollment}, status: :ok
         else
             render json: {status: 'ERROR', message: 'Enrollment not updated', data: @enrollment.errors}, status: :unprocessable_entity

@@ -62,7 +62,7 @@ class InvoicesController < ApplicationController
     # PUT /invoices/:id (update invoice)
     def update
         @invoice = Invoice.find(params[:id])
-        if @invoice.update_attributes(invoice_params)
+        if @invoice.update(invoice_params)
             render json: {status: 'SUCCESS', message: 'Updated invoice', data: @invoice}, status: :ok
         else
             render json: {status: 'ERROR', message: 'Invoice not updated', data: @invoice.errors}, status: :unprocessable_entity
